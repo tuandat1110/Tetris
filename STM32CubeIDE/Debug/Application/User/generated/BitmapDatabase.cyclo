@@ -1,0 +1,2 @@
+E:/TouchGFX/Tetris/TouchGFX/generated/images/src/BitmapDatabase.cpp:25:37:const touchgfx::Bitmap::BitmapData* BitmapDatabase::getInstance()	1
+E:/TouchGFX/Tetris/TouchGFX/generated/images/src/BitmapDatabase.cpp:30:10:uint16_t BitmapDatabase::getInstanceSize()	1
