@@ -7,7 +7,9 @@ E:/TouchGFX/Tetris/Core/Src/stm32f4xx_hal_msp.c:185:6:HAL_I2C_MspInit	64	static
 E:/TouchGFX/Tetris/Core/Src/stm32f4xx_hal_msp.c:234:6:HAL_I2C_MspDeInit	8	static
 E:/TouchGFX/Tetris/Core/Src/stm32f4xx_hal_msp.c:265:6:HAL_LTDC_MspInit	120	static
 E:/TouchGFX/Tetris/Core/Src/stm32f4xx_hal_msp.c:391:6:HAL_LTDC_MspDeInit	8	static
-E:/TouchGFX/Tetris/Core/Src/stm32f4xx_hal_msp.c:453:6:HAL_SPI_MspInit	40	static
-E:/TouchGFX/Tetris/Core/Src/stm32f4xx_hal_msp.c:491:6:HAL_SPI_MspDeInit	0	static
-E:/TouchGFX/Tetris/Core/Src/stm32f4xx_hal_msp.c:623:6:HAL_SDRAM_MspInit	48	static
-E:/TouchGFX/Tetris/Core/Src/stm32f4xx_hal_msp.c:709:6:HAL_SDRAM_MspDeInit	8	static
+E:/TouchGFX/Tetris/Core/Src/stm32f4xx_hal_msp.c:453:6:HAL_RNG_MspInit	8	static
+E:/TouchGFX/Tetris/Core/Src/stm32f4xx_hal_msp.c:476:6:HAL_RNG_MspDeInit	0	static
+E:/TouchGFX/Tetris/Core/Src/stm32f4xx_hal_msp.c:498:6:HAL_SPI_MspInit	40	static
+E:/TouchGFX/Tetris/Core/Src/stm32f4xx_hal_msp.c:536:6:HAL_SPI_MspDeInit	0	static
+E:/TouchGFX/Tetris/Core/Src/stm32f4xx_hal_msp.c:668:6:HAL_SDRAM_MspInit	48	static
+E:/TouchGFX/Tetris/Core/Src/stm32f4xx_hal_msp.c:754:6:HAL_SDRAM_MspDeInit	8	static

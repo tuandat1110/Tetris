@@ -62,9 +62,13 @@ public:
     touchgfx::Box* gridBox[20][11];
     void rotatePiece(int x);
     int currentBlockPos[4][2]; // [i][0] là x, [i][1] là y
-
-
-
+    void attachBlock(int x);
+    bool checkCollision(int type,int nextX,int nextY);
+    void spawnNewBlock();
+    bool checkBlockRight(int type,int y);
+    bool checkBlockLeft(int type,int y);
+    void checkFullLines();
+    void clearLine(int row);
 protected:
 };
 

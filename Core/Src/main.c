@@ -71,6 +71,8 @@ I2C_HandleTypeDef hi2c3;
 
 LTDC_HandleTypeDef hltdc;
 
+RNG_HandleTypeDef hrng;
+
 SPI_HandleTypeDef hspi5;
 
 SDRAM_HandleTypeDef hsdram1;
@@ -107,6 +109,7 @@ static void MX_SPI5_Init(void);
 static void MX_FMC_Init(void);
 static void MX_LTDC_Init(void);
 static void MX_DMA2D_Init(void);
+static void MX_RNG_Init(void);
 void StartDefaultTask(void *argument);
 extern void TouchGFX_Task(void *argument);
 
@@ -185,6 +188,7 @@ int main(void)
   MX_FMC_Init();
   MX_LTDC_Init();
   MX_DMA2D_Init();
+  MX_RNG_Init();
   /* USER CODE BEGIN 2 */
   MX_TouchGFX_Init();
   MX_TouchGFX_PreOSInit();
@@ -478,6 +482,32 @@ static void MX_LTDC_Init(void)
 }
 
 /**
+  * @brief RNG Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_RNG_Init(void)
+{
+
+  /* USER CODE BEGIN RNG_Init 0 */
+
+  /* USER CODE END RNG_Init 0 */
+
+  /* USER CODE BEGIN RNG_Init 1 */
+
+  /* USER CODE END RNG_Init 1 */
+  hrng.Instance = RNG;
+  if (HAL_RNG_Init(&hrng) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN RNG_Init 2 */
+
+  /* USER CODE END RNG_Init 2 */
+
+}
+
+/**
   * @brief SPI5 Initialization Function
   * @param None
   * @retval None
@@ -635,8 +665,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PA1 PA2 PA14 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_14;
+  /*Configure GPIO pins : PA1 PA2 PA14 PA15 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_14|GPIO_PIN_15;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -1016,12 +1046,14 @@ void StartDefaultTask(void *argument)
 	static uint8_t prevStateL = 1;
 	static uint8_t prevStateR = 1;
 	static uint8_t prevStateT = 1;
+	static uint8_t prevStateS = 1;
 
 	for(;;)
 	{
 	    uint8_t currStateL = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_11);
 	    uint8_t currStateR = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_12);
 	    uint8_t currStateT = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_14);
+	    uint8_t currStateS = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_15);
 	    // Nút L
 	    ///HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13);
 	    if (prevStateL == 1 && currStateL == 0) {
@@ -1049,11 +1081,19 @@ void StartDefaultTask(void *argument)
 			osDelay(100); // 100ms kêu "pip"
 			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_RESET);
 		}
+	    // Nut S de tang toc cho block
+	    if (prevStateS == 1 && currStateS == 0) {
+			uint8_t data = 'S';
+			osStatus_t status = osMessageQueuePut(myQueue01Handle, &data, 0, 10);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_SET);
+			osDelay(100); // 100ms kêu "pip"
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_RESET);
+		}
 
 	    prevStateL = currStateL;
 	    prevStateR = currStateR;
 	    prevStateT = currStateT;
-
+	    prevStateS = currStateS;
 	    osDelay(20);
 	}
 

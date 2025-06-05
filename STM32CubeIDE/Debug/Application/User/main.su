@@ -1,0 +1,17 @@
+E:/TouchGFX/Tetris/Core/Src/main.c:930:13:SPI5_Write	16	static
+E:/TouchGFX/Tetris/Core/Src/main.c:1042:6:StartDefaultTask	48	static
+E:/TouchGFX/Tetris/Core/Src/main.c:258:6:SystemClock_Config	96	static
+E:/TouchGFX/Tetris/Core/Src/main.c:160:5:main	120	static
+E:/TouchGFX/Tetris/Core/Src/main.c:774:6:IOE_Init	0	static
+E:/TouchGFX/Tetris/Core/Src/main.c:783:6:IOE_ITConfig	0	static
+E:/TouchGFX/Tetris/Core/Src/main.c:795:6:IOE_Write	32	static
+E:/TouchGFX/Tetris/Core/Src/main.c:806:9:IOE_Read	32	static
+E:/TouchGFX/Tetris/Core/Src/main.c:819:10:IOE_ReadMultiple	24	static
+E:/TouchGFX/Tetris/Core/Src/main.c:828:6:IOE_Delay	0	static
+E:/TouchGFX/Tetris/Core/Src/main.c:956:6:LCD_IO_Init	8	static
+E:/TouchGFX/Tetris/Core/Src/main.c:966:6:LCD_IO_WriteData	16	static
+E:/TouchGFX/Tetris/Core/Src/main.c:982:6:LCD_IO_WriteReg	16	static
+E:/TouchGFX/Tetris/Core/Src/main.c:1001:10:LCD_IO_ReadData	32	static
+E:/TouchGFX/Tetris/Core/Src/main.c:1028:6:LCD_Delay	0	static
+E:/TouchGFX/Tetris/Core/Src/main.c:1111:6:HAL_TIM_PeriodElapsedCallback	0	static
+E:/TouchGFX/Tetris/Core/Src/main.c:1129:6:Error_Handler	0	static

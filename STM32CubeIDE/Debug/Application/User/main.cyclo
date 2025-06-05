@@ -1,0 +1,17 @@
+E:/TouchGFX/Tetris/Core/Src/main.c:930:13:SPI5_Write	1
+E:/TouchGFX/Tetris/Core/Src/main.c:1042:6:StartDefaultTask	9
+E:/TouchGFX/Tetris/Core/Src/main.c:258:6:SystemClock_Config	1
+E:/TouchGFX/Tetris/Core/Src/main.c:160:5:main	2
+E:/TouchGFX/Tetris/Core/Src/main.c:774:6:IOE_Init	1
+E:/TouchGFX/Tetris/Core/Src/main.c:783:6:IOE_ITConfig	1
+E:/TouchGFX/Tetris/Core/Src/main.c:795:6:IOE_Write	1
+E:/TouchGFX/Tetris/Core/Src/main.c:806:9:IOE_Read	1
+E:/TouchGFX/Tetris/Core/Src/main.c:819:10:IOE_ReadMultiple	1
+E:/TouchGFX/Tetris/Core/Src/main.c:828:6:IOE_Delay	1
+E:/TouchGFX/Tetris/Core/Src/main.c:956:6:LCD_IO_Init	1
+E:/TouchGFX/Tetris/Core/Src/main.c:966:6:LCD_IO_WriteData	1
+E:/TouchGFX/Tetris/Core/Src/main.c:982:6:LCD_IO_WriteReg	1
+E:/TouchGFX/Tetris/Core/Src/main.c:1001:10:LCD_IO_ReadData	1
+E:/TouchGFX/Tetris/Core/Src/main.c:1028:6:LCD_Delay	1
+E:/TouchGFX/Tetris/Core/Src/main.c:1111:6:HAL_TIM_PeriodElapsedCallback	2
+E:/TouchGFX/Tetris/Core/Src/main.c:1129:6:Error_Handler	1
