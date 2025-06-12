@@ -30,7 +30,7 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::Image image2;
+    touchgfx::Image nen;
     touchgfx::BoxWithBorder cell_0_6;
     touchgfx::BoxWithBorder cell_0_7;
     touchgfx::BoxWithBorder cell_0_8;
@@ -38,7 +38,7 @@ protected:
     touchgfx::BoxWithBorder cell_0_9;
     touchgfx::BoxWithBorder cell_0_0;
     touchgfx::TextArea textArea1;
-    touchgfx::TextAreaWithOneWildcard textArea1_1;
+    touchgfx::TextAreaWithOneWildcard score;
     touchgfx::BoxWithBorder cell_0_1;
     touchgfx::BoxWithBorder cell_0_2;
     touchgfx::BoxWithBorder cell_0_3;

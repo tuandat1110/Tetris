@@ -10,3 +10,6 @@ void Model::tick()
 {
 
 }
+
+void Model::setFinalScore(int s) { finalScore = s; }
+int Model::getFinalScore() const { return finalScore; }

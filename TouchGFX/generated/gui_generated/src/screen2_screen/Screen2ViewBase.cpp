@@ -13,9 +13,9 @@ Screen2ViewBase::Screen2ViewBase() :
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    image2.setXY(0, 0);
-    image2.setBitmap(touchgfx::Bitmap(BITMAP_SCREENSHOT_2025_06_03_094458_ID));
-    add(image2);
+    nen.setXY(0, 0);
+    nen.setBitmap(touchgfx::Bitmap(BITMAP_SCREENSHOT_2025_06_03_094458_ID));
+    add(nen);
 
     cell_0_6.setPosition(96, 0, 16, 16);
     cell_0_6.setColor(touchgfx::Color::getColorFromRGB(218, 240, 247));
@@ -59,11 +59,11 @@ Screen2ViewBase::Screen2ViewBase() :
     textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_OC7C));
     add(textArea1);
 
-    textArea1_1.setPosition(176, 64, 60, 20);
-    textArea1_1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textArea1_1.setLinespacing(0);
-    textArea1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_O57P));
-    add(textArea1_1);
+    score.setPosition(176, 64, 60, 20);
+    score.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    score.setLinespacing(0);
+    score.setTypedText(touchgfx::TypedText(T___SINGLEUSE_O57P));
+    add(score);
 
     cell_0_1.setPosition(16, 0, 16, 16);
     cell_0_1.setColor(touchgfx::Color::getColorFromRGB(89, 179, 207));

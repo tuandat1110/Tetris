@@ -16,6 +16,12 @@ void Screen2Presenter::deactivate()
 {
 
 }
+void Screen2Presenter::setFinalScore(int score)
+{
+    model->setFinalScore(score);
+}
+
+
 //void Screen2View::tick()
 //{
 //    // Game logic, rơi khối, cập nhật box,...

@@ -11,6 +11,8 @@ extern RNG_HandleTypeDef hrng;
 
 int typeBlock = 6;
 int rotatedPiece[4][2];
+int currentScore = 0;
+int maxScore = 0;
 
 // Định nghĩa hình dạng của các khối
 int TETROMINO[7][4][2] = {
@@ -41,6 +43,7 @@ const uint8_t colors[7][3] = {
    {255, 0, 0}      // Z - Red
 };
 
+Unicode::UnicodeChar scoreBuffer[10]; // Hoặc đặt const size như: SCORE_SIZE = 10;
 
 Screen2View::Screen2View()
 {
@@ -50,6 +53,10 @@ Screen2View::Screen2View()
 void Screen2View::setupScreen()
 {
     Screen2ViewBase::setupScreen();
+    int newScore = 0;
+    Unicode::snprintf(scoreBuffer, sizeof(scoreBuffer), "%d", newScore);
+    score.setWildcard(scoreBuffer);
+    score.invalidate(); // Vẽ lại TextArea với giá trị mới
     gridBox[0][0] = &cell_0_0;   gridBox[0][1] = &cell_0_1;   gridBox[0][2] = &cell_0_2;   gridBox[0][3] = &cell_0_3;   gridBox[0][4] = &cell_0_4;
 	gridBox[0][5] = &cell_0_5;   gridBox[0][6] = &cell_0_6;   gridBox[0][7] = &cell_0_7;   gridBox[0][8] = &cell_0_8;   gridBox[0][9] = &cell_0_9;   gridBox[0][10] = &cell_0_10;
 
@@ -113,8 +120,9 @@ void Screen2View::setupScreen()
 		for (int y = 0; y < 11; y++) {
 			if (gridBox[x][y]) {
 				grid[x][y].setPosition(gridBox[x][y]->getX(), gridBox[x][y]->getY());
-				grid[x][y].setColor(gridBox[x][y]->getColor());
+				grid[x][y].setColor(touchgfx::Color::getColorFromRGB(50,50,50));
 				grid[x][y].setOccupied(false);
+				gridBox[x][y]->setColor(touchgfx::Color::getColorFromRGB(50,50,50));
 			}
 		}
 	}
@@ -160,7 +168,6 @@ bool Screen2View::checkCollision(int type, int nextX, int nextY) {
     }
     return false;
 }
-
 
 void Screen2View::attachBlock(int type) {
     if (type < 0 || type > 6) return;
@@ -289,6 +296,10 @@ void Screen2View::checkFullLines() {
 
         if (isFull) {
             clearLine(i);
+            currentScore++;
+            Unicode::snprintf(scoreBuffer, sizeof(scoreBuffer), "%d", currentScore);
+            score.setWildcard(scoreBuffer);
+            score.invalidate(); // Vẽ lại TextArea với giá trị mới
         }
     }
 }
@@ -299,7 +310,6 @@ void Screen2View::clearLine(int row) {
         for (int j = 0; j < 11; j++) {
             // Copy trạng thái của ô trên xuống ô hiện tại
             grid[i][j].setOccupied(grid[i - 1][j].isOccupied());
-
             // Copy màu
             gridBox[i][j]->setColor(gridBox[i - 1][j]->getColor());
         }
@@ -308,7 +318,7 @@ void Screen2View::clearLine(int row) {
     // Reset dòng đầu tiên (dòng 0) về rỗng
     for (int j = 0; j < 11; j++) {
         grid[0][j].setOccupied(false);
-        gridBox[0][j]->setColor(touchgfx::Color::getColorFromRGB(0, 0, 0)); // Đen
+        gridBox[0][j]->setColor(touchgfx::Color::getColorFromRGB(50, 50, 50)); // Đen
     }
 
     // Cập nhật lại giao diện
@@ -319,6 +329,14 @@ void Screen2View::clearLine(int row) {
     }
 }
 
+int Screen2View::checkLose(){
+	for(int i=0;i<11;i++){
+		if(grid[0][i].isOccupied()){
+			return 1;
+		}
+	}
+	return 0;
+}
 
 void Screen2View::tick()
 {
@@ -370,6 +388,11 @@ void Screen2View::tick()
             // Nếu va chạm → dính khối
             attachBlock(typeBlock);
             checkFullLines();
+            if(checkLose()){
+            	// Chuyển sang màn hình GameOver và truyền điểm
+				static_cast<FrontendApplication*>(Application::getInstance())->gotoScreen3ScreenSlideTransitionWest();
+				presenter->setFinalScore(currentScore);
+            }
             // Khởi tạo khối mới
             pieceX = 0;
             pieceY = 3; // giữa màn hình

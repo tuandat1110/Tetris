@@ -69,6 +69,7 @@ public:
     bool checkBlockLeft(int type,int y);
     void checkFullLines();
     void clearLine(int row);
+    int checkLose();
 protected:
 };
 

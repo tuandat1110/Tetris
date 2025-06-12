@@ -62,7 +62,7 @@
         "Components": [
           {
             "Type": "Image",
-            "Name": "image2",
+            "Name": "nen",
             "Width": 740,
             "Height": 647,
             "RelativeFilename": "Screenshot 2025-06-03 094458.png"
@@ -156,7 +156,7 @@
           },
           {
             "Type": "TextArea",
-            "Name": "textArea1_1",
+            "Name": "score",
             "X": 176,
             "Y": 64,
             "Width": 60,
@@ -3160,6 +3160,92 @@
               "ScreenTransitionType": "ScreenTransitionSlide",
               "ScreenTransitionDirection": "East",
               "ActionComponent": "Screen1"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "West",
+              "ActionComponent": "Screen3"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Screen3",
+        "Components": [
+          {
+            "Type": "Image",
+            "Name": "nen",
+            "Width": 740,
+            "Height": 647,
+            "RelativeFilename": "Screenshot 2025-06-03 094458.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "X": -62,
+            "Width": 364,
+            "Height": 280,
+            "RelativeFilename": "gameOverV2PNG.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "score",
+            "X": 38,
+            "Y": 199,
+            "Width": 165,
+            "Height": 30,
+            "TextId": "__SingleUse_51EA",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 247,
+              "Green": 242,
+              "Blue": 242
+            },
+            "Wildcard1": {}
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "buttonTryAgain",
+            "X": -120,
+            "Y": 260,
+            "Width": 480,
+            "Height": 60,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_60_large_rounded_pressed.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_60_large_rounded_action.png",
+            "TextId": "__SingleUse_NJ52",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Preset": "alternate_theme\\presets\\button\\regular\\height_60\\large_rounded_action.json"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonTryAgain"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionCover",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "Screen2"
             }
           }
         ]

@@ -1,2 +1,4 @@
 E:/TouchGFX/Tetris/TouchGFX/gui/src/model/Model.cpp:4:1:Model::Model()	0	static
 E:/TouchGFX/Tetris/TouchGFX/gui/src/model/Model.cpp:9:6:void Model::tick()	0	static
+E:/TouchGFX/Tetris/TouchGFX/gui/src/model/Model.cpp:14:6:void Model::setFinalScore(int)	0	static
+E:/TouchGFX/Tetris/TouchGFX/gui/src/model/Model.cpp:15:5:int Model::getFinalScore() const	0	static

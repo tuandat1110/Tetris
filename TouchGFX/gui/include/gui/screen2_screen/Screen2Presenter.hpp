@@ -26,6 +26,8 @@ public:
     virtual void deactivate();
 
     virtual ~Screen2Presenter() {}
+    virtual void setFinalScore(int score);
+
 
 private:
     Screen2Presenter();

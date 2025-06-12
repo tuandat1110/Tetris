@@ -1,0 +1,9 @@
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	0	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	0	static
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	0	static
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen3_screen/Screen3View.cpp:23:6:virtual void Screen3View::tearDownScreen()	0	static
+../../TouchGFX/gui/include/gui/screen3_screen/Screen3View.hpp:11:13:Screen3View::~Screen3View()	8	static
+../../TouchGFX/gui/include/gui/screen3_screen/Screen3View.hpp:11:13:virtual Screen3View::~Screen3View()	8	static
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen3_screen/Screen3View.cpp:13:1:Screen3View::Screen3View()	8	static
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen3_screen/Screen3View.cpp:5:6:void Screen3View::setFinalScore(int)	16	static
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen3_screen/Screen3View.cpp:18:6:virtual void Screen3View::setupScreen()	0	static
