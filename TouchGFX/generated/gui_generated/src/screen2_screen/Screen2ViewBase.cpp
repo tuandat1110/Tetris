@@ -17,6 +17,18 @@ Screen2ViewBase::Screen2ViewBase() :
     nen.setBitmap(touchgfx::Bitmap(BITMAP_SCREENSHOT_2025_06_03_094458_ID));
     add(nen);
 
+    bestScore.setPosition(176, 72, 60, 20);
+    bestScore.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    bestScore.setLinespacing(0);
+    bestScore.setTypedText(touchgfx::TypedText(T___SINGLEUSE_742T));
+    add(bestScore);
+
+    textArea1_1.setPosition(176, 14, 60, 50);
+    textArea1_1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textArea1_1.setLinespacing(0);
+    textArea1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_BEZC));
+    add(textArea1_1);
+
     cell_0_6.setPosition(96, 0, 16, 16);
     cell_0_6.setColor(touchgfx::Color::getColorFromRGB(218, 240, 247));
     cell_0_6.setBorderColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -53,13 +65,13 @@ Screen2ViewBase::Screen2ViewBase() :
     cell_0_0.setBorderSize(1);
     add(cell_0_0);
 
-    textArea1.setPosition(176, 36, 60, 20);
+    textArea1.setPosition(176, 104, 60, 20);
     textArea1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textArea1.setLinespacing(0);
     textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_OC7C));
     add(textArea1);
 
-    score.setPosition(176, 64, 60, 20);
+    score.setPosition(176, 136, 60, 20);
     score.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     score.setLinespacing(0);
     score.setTypedText(touchgfx::TypedText(T___SINGLEUSE_O57P));

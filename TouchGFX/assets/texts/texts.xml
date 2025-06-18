@@ -6,6 +6,12 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_742T" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_BEZC" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Best &#10;Score</Translation>
+      </Text>
       <Text Id="__SingleUse_NJ52" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">Try Again</Translation>
       </Text>

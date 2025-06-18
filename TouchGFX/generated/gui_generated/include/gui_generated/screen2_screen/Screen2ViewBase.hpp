@@ -9,9 +9,9 @@
 #include <gui/screen2_screen/Screen2Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/Image.hpp>
-#include <touchgfx/widgets/BoxWithBorder.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <touchgfx/widgets/Button.hpp>
 
 class Screen2ViewBase : public touchgfx::View<Screen2Presenter>
@@ -31,6 +31,8 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Image nen;
+    touchgfx::TextAreaWithOneWildcard bestScore;
+    touchgfx::TextArea textArea1_1;
     touchgfx::BoxWithBorder cell_0_6;
     touchgfx::BoxWithBorder cell_0_7;
     touchgfx::BoxWithBorder cell_0_8;

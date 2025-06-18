@@ -1,20 +1,20 @@
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	1
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	1
-E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:131:6:virtual void Screen2View::tearDownScreen()	1
-E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:407:6:virtual void Screen2View::handleTickEvent()	1
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:136:6:virtual void Screen2View::tearDownScreen()	1
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:414:6:virtual void Screen2View::handleTickEvent()	1
 ../../TouchGFX/gui/include/gui/screen2_screen/Screen2View.hpp:51:13:Screen2View::~Screen2View()	1
 ../../TouchGFX/gui/include/gui/screen2_screen/Screen2View.hpp:51:13:virtual Screen2View::~Screen2View()	1
-E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:48:1:Screen2View::Screen2View()	3
-E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:136:6:void Screen2View::drawPiece(int)	5
-E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:159:6:bool Screen2View::checkCollision(int, int, int)	5
-E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:172:6:void Screen2View::attachBlock(int)	5
-E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:196:6:void Screen2View::clearPiece(int)	5
-E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:215:6:void Screen2View::rotatePiece(int)	5
-E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:256:6:void Screen2View::spawnNewBlock()	2
-E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:265:6:bool Screen2View::checkBlockRight(int, int)	1
-E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:276:6:bool Screen2View::checkBlockLeft(int, int)	1
-E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:307:6:void Screen2View::clearLine(int)	6
-E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:332:5:int Screen2View::checkLose()	3
-E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:53:6:virtual void Screen2View::setupScreen()	4
-E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:287:6:void Screen2View::checkFullLines()	4
-E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:341:6:virtual void Screen2View::tick()	10
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:49:1:Screen2View::Screen2View()	3
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:141:6:void Screen2View::drawPiece(int)	5
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:164:6:bool Screen2View::checkCollision(int, int, int)	5
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:177:6:void Screen2View::attachBlock(int)	5
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:201:6:void Screen2View::clearPiece(int)	5
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:220:6:void Screen2View::rotatePiece(int)	5
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:261:6:void Screen2View::spawnNewBlock()	2
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:270:6:bool Screen2View::checkBlockRight(int, int)	1
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:281:6:bool Screen2View::checkBlockLeft(int, int)	1
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:312:6:void Screen2View::clearLine(int)	6
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:337:5:int Screen2View::checkLose()	3
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:54:6:virtual void Screen2View::setupScreen()	4
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:292:6:void Screen2View::checkFullLines()	4
+E:/TouchGFX/Tetris/TouchGFX/gui/src/screen2_screen/Screen2View.cpp:346:6:virtual void Screen2View::tick()	11

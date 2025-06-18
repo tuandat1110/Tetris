@@ -68,6 +68,27 @@
             "RelativeFilename": "Screenshot 2025-06-03 094458.png"
           },
           {
+            "Type": "TextArea",
+            "Name": "bestScore",
+            "X": 176,
+            "Y": 72,
+            "Width": 60,
+            "Height": 20,
+            "TextId": "__SingleUse_742T",
+            "TextRotation": "0",
+            "Wildcard1": {}
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1_1",
+            "X": 176,
+            "Y": 14,
+            "Width": 60,
+            "Height": 50,
+            "TextId": "__SingleUse_BEZC",
+            "TextRotation": "0"
+          },
+          {
             "Type": "BoxWithBorder",
             "Name": "cell_0_6",
             "X": 96,
@@ -148,7 +169,7 @@
             "Type": "TextArea",
             "Name": "textArea1",
             "X": 176,
-            "Y": 36,
+            "Y": 104,
             "Width": 60,
             "Height": 20,
             "TextId": "__SingleUse_OC7C",
@@ -158,7 +179,7 @@
             "Type": "TextArea",
             "Name": "score",
             "X": 176,
-            "Y": 64,
+            "Y": 136,
             "Width": 60,
             "Height": 20,
             "TextId": "__SingleUse_O57P",

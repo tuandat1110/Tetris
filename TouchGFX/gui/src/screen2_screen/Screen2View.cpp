@@ -44,6 +44,7 @@ const uint8_t colors[7][3] = {
 };
 
 Unicode::UnicodeChar scoreBuffer[10]; // Hoặc đặt const size như: SCORE_SIZE = 10;
+Unicode::UnicodeChar scoreBuffer2[10];
 
 Screen2View::Screen2View()
 {
@@ -53,10 +54,14 @@ Screen2View::Screen2View()
 void Screen2View::setupScreen()
 {
     Screen2ViewBase::setupScreen();
-    int newScore = 0;
-    Unicode::snprintf(scoreBuffer, sizeof(scoreBuffer), "%d", newScore);
+    currentScore = 0;
+    Unicode::snprintf(scoreBuffer, sizeof(scoreBuffer), "%d", currentScore);
     score.setWildcard(scoreBuffer);
     score.invalidate(); // Vẽ lại TextArea với giá trị mới
+
+    Unicode::snprintf(scoreBuffer2, sizeof(scoreBuffer2), "%d", maxScore);
+    bestScore.setWildcard(scoreBuffer2);
+    bestScore.invalidate();
     gridBox[0][0] = &cell_0_0;   gridBox[0][1] = &cell_0_1;   gridBox[0][2] = &cell_0_2;   gridBox[0][3] = &cell_0_3;   gridBox[0][4] = &cell_0_4;
 	gridBox[0][5] = &cell_0_5;   gridBox[0][6] = &cell_0_6;   gridBox[0][7] = &cell_0_7;   gridBox[0][8] = &cell_0_8;   gridBox[0][9] = &cell_0_9;   gridBox[0][10] = &cell_0_10;
 
@@ -389,6 +394,9 @@ void Screen2View::tick()
             attachBlock(typeBlock);
             checkFullLines();
             if(checkLose()){
+            	if(maxScore < currentScore){
+            		maxScore = currentScore;
+            	}
             	// Chuyển sang màn hình GameOver và truyền điểm
 				static_cast<FrontendApplication*>(Application::getInstance())->gotoScreen3ScreenSlideTransitionWest();
 				presenter->setFinalScore(currentScore);
@@ -402,7 +410,6 @@ void Screen2View::tick()
         }
     }
 }
-
 
 void Screen2View::handleTickEvent()
 {
