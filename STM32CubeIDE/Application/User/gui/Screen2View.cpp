@@ -34,8 +34,6 @@ int TETROMINO[7][4][2] = {
 
 // Mảng màu RGB tương ứng với mỗi loại khối
 const uint8_t colors[7][3] = {
-		// test
-
    {0, 255, 255},   // I - Cyan
    {0, 0, 255},     // J - Blue
    {255, 165, 0},   // L - Orange
@@ -161,7 +159,6 @@ void Screen2View::drawPiece(int type)
             gridBox[x][y]->invalidate();
         }
     }
-    // test
 }
 
 bool Screen2View::checkCollision(int type, int nextX, int nextY) {
