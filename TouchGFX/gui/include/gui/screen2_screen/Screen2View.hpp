@@ -52,24 +52,14 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
     virtual void tick();
-    void drawPiece(int x);
-    void clearPiece(int x);
     virtual void handleTickEvent() override;
     GridCell grid[20][11];
     int pieceX = 0; // bắt đầu từ x = 3
     int pieceY = 3; // bắt đầu ở trên cùng
     int tickCount = 0;
     touchgfx::Box* gridBox[20][11];
-    void rotatePiece(int x);
     int currentBlockPos[4][2]; // [i][0] là x, [i][1] là y
-    void attachBlock(int x);
-    bool checkCollision(int type,int nextX,int nextY);
-    void spawnNewBlock();
-    bool checkBlockRight(int type,int y);
-    bool checkBlockLeft(int type,int y);
-    void checkFullLines();
-    void clearLine(int row);
-    int checkLose();
+
 protected:
 };
 
