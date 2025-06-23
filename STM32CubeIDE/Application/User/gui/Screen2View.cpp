@@ -162,6 +162,39 @@ void Screen2View::checkFullLines() {
     }
 }
 
+void Screen2View::clearLine(int row) {
+    // Dồn tất cả hàng phía trên xuống 1 hàng
+    for (int i = row; i > 0; i--) {
+        for (int j = 0; j < 11; j++) {
+            // Copy trạng thái của ô trên xuống ô hiện tại
+            grid[i][j].setOccupied(grid[i - 1][j].isOccupied());
+            // Copy màu
+            gridBox[i][j]->setColor(gridBox[i - 1][j]->getColor());
+        }
+    }
+
+    // Reset dòng đầu tiên (dòng 0) về rỗng
+    for (int j = 0; j < 11; j++) {
+        grid[0][j].setOccupied(false);
+        gridBox[0][j]->setColor(touchgfx::Color::getColorFromRGB(50, 50, 50)); // Đen
+    }
+
+    // Cập nhật lại giao diện
+    for (int i = 0; i < 20; i++) {
+        for (int j = 0; j < 11; j++) {
+            gridBox[i][j]->invalidate();
+        }
+    }
+}
+
+int Screen2View::checkLose(){
+	for(int i=0;i<11;i++){
+		if(grid[0][i].isOccupied()){
+			return 1;
+		}
+	}
+	return 0;
+}
 
 void Screen2View::tick()
 {

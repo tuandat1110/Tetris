@@ -60,7 +60,8 @@ public:
     touchgfx::Box* gridBox[20][11];
     int currentBlockPos[4][2]; // [i][0] là x, [i][1] là y
     void checkFullLines();
-
+    void clearLine(int row);
+    int checkLose();
 protected:
 };
 
