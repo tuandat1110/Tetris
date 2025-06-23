@@ -177,10 +177,26 @@ bool Screen2View::checkCollision(int type, int nextX, int nextY) {
     return false;
 }
 
-void Screen2View::attachBlock(int type) {
-    if (type < 0 || type > 6) return;
+void Screen2View::setGridCell(int x, int y, int r, int g, int b)
+{
+    if (x >= 0 && x < 20 && y >= 0 && y < 11)
+    {
+        gridBox[x][y]->setColor(touchgfx::Color::getColorFromRGB(r, g, b));
+        gridBox[x][y]->invalidate();
+        grid[x][y].setOccupied(true);
+    }
+}
 
-    for (int i = 0; i < 4; i++) {
+void Screen2View::attachBlock(int type)
+{
+    if (type < 0 || type >= 7) return;
+
+    const int red   = colors[type][0];
+    const int green = colors[type][1];
+    const int blue  = colors[type][2];
+
+    for (int i = 0; i < 4; i++)
+    {
         int dx = TETROMINO[type][i][0];
         int dy = TETROMINO[type][i][1];
 
@@ -190,15 +206,10 @@ void Screen2View::attachBlock(int type) {
         currentBlockPos[i][0] = x;
         currentBlockPos[i][1] = y;
 
-        if (x >= 0 && x < 20 && y >= 0 && y < 11) {
-            gridBox[x][y]->setColor(touchgfx::Color::getColorFromRGB(
-                colors[type][0], colors[type][1], colors[type][2]
-            ));
-            gridBox[x][y]->invalidate();
-            grid[x][y].setOccupied(true);
-        }
+        setGridCell(x, y, red, green, blue);
     }
 }
+
 
 
 void Screen2View::clearPiece(int type)
