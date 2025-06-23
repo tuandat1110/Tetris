@@ -174,6 +174,61 @@ void Screen2View::tick()
 
    while (maxEvents-- > 0 && osMessageQueueGet(myQueue01Handle, &res, NULL, 0) == osOK) {
 	   // xử lý sự kiện ở đây
+	   if (res == 'R') {
+	   		   clearPiece(typeBlock);
+	   		   pieceY++;
+	   		   bool valid = checkBlockRight(typeBlock, pieceY);
+	   		   if (!valid) pieceY--;
+	   		   drawPiece(typeBlock);
+	   	   }
+	   	   else if (res == 'L') {
+	   		   clearPiece(typeBlock);
+	   		   pieceY--;
+	   		   bool valid = checkBlockLeft(typeBlock, pieceY);
+	   		   if (!valid) pieceY++;
+	   		   drawPiece(typeBlock);
+	   	   }
+	   	   else if (res == 'T') {
+	   		   clearPiece(typeBlock);
+	   		   rotatePiece(typeBlock);
+	   		   drawPiece(typeBlock);
+	   	   }
+	   	   else if (res == 'S') {
+	   		   isFastDrop = true; // Nhấn giữ S → rơi nhanh
+	   	   }
+
+	      }
+
+	       int dropSpeed = isFastDrop ? 2 : 40;
+
+	       // Tự động rơi theo thời gian
+	       if (tickCount % dropSpeed == 0)
+	       {
+	           isFastDrop = false;
+
+	           if (!checkCollision(typeBlock, pieceX + 1, pieceY)) {
+	               clearPiece(typeBlock);
+	               pieceX++; // Rơi nếu không va chạm
+	               drawPiece(typeBlock);
+	           } else {
+	               // Nếu va chạm → dính khối
+	               attachBlock(typeBlock);
+	               checkFullLines();
+	               if(checkLose()){
+	               	if(maxScore < currentScore){
+	               		maxScore = currentScore;
+	               	}
+	               	// Chuyển sang màn hình GameOver và truyền điểm
+	   				static_cast<FrontendApplication*>(Application::getInstance())->gotoScreen3ScreenSlideTransitionWest();
+	   				presenter->setFinalScore(currentScore);
+	               }
+	               // Khởi tạo khối mới
+	               pieceX = 0;
+	               pieceY = 3; // giữa màn hình
+	               //typeBlock = rand() % 7; // tạo khối mới
+	               spawnNewBlock();
+	               drawPiece(typeBlock);
+	           }
    }
 }
 
