@@ -59,6 +59,7 @@ public:
     int tickCount = 0;
     touchgfx::Box* gridBox[20][11];
     int currentBlockPos[4][2]; // [i][0] là x, [i][1] là y
+    void checkFullLines();
 
 protected:
 };

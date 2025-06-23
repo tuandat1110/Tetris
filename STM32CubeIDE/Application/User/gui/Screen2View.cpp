@@ -140,157 +140,7 @@ void Screen2View::tearDownScreen()
     Screen2ViewBase::tearDownScreen();
 }
 
-void Screen2View::drawPiece(int type)
-{
-    if (type < 0 || type > 6) return;
 
-    for (int i = 0; i < 4; i++) {
-        int dx = TETROMINO[type][i][0];
-        int dy = TETROMINO[type][i][1];
-
-        int x = pieceX + dx;
-        int y = pieceY + dy;
-
-        currentBlockPos[i][0] = x;
-        currentBlockPos[i][1] = y;
-
-        if (x >= 0 && x < 20 && y >= 0 && y < 11) {
-            gridBox[x][y]->setColor(touchgfx::Color::getColorFromRGB(
-                colors[type][0], colors[type][1], colors[type][2]
-            ));
-            gridBox[x][y]->invalidate();
-        }
-    }
-    // test
-}
-
-bool Screen2View::checkCollision(int type, int nextX, int nextY) {
-    for (int i = 0; i < 4; i++) {
-        int dx = TETROMINO[type][i][0];
-        int dy = TETROMINO[type][i][1];
-        int x = nextX + dx;
-        int y = nextY + dy;
-
-        if (x >= 20) return true; // chạm đáy
-        if (x >= 0 && grid[x][y].isOccupied()) return true; // chạm block khác
-    }
-    return false;
-}
-
-void Screen2View::attachBlock(int type) {
-    if (type < 0 || type > 6) return;
-
-    for (int i = 0; i < 4; i++) {
-        int dx = TETROMINO[type][i][0];
-        int dy = TETROMINO[type][i][1];
-
-        int x = pieceX + dx;
-        int y = pieceY + dy;
-
-        currentBlockPos[i][0] = x;
-        currentBlockPos[i][1] = y;
-
-        if (x >= 0 && x < 20 && y >= 0 && y < 11) {
-            gridBox[x][y]->setColor(touchgfx::Color::getColorFromRGB(
-                colors[type][0], colors[type][1], colors[type][2]
-            ));
-            gridBox[x][y]->invalidate();
-            grid[x][y].setOccupied(true);
-        }
-    }
-}
-
-
-void Screen2View::clearPiece(int type)
-{
-    if (type < 0 || type > 6) return;
-
-    for (int i = 0; i < 4; i++) {
-        int dx = TETROMINO[type][i][0];
-        int dy = TETROMINO[type][i][1];
-
-        int x = pieceX + dx;
-        int y = pieceY + dy;
-
-        if (x >= 0 && x < 20 && y >= 0 && y < 11) {
-            // Trả về màu nền hoặc màu trống
-            gridBox[x][y]->setColor(grid[x][y].getColor());
-            gridBox[x][y]->invalidate();
-        }
-    }
-}
-
-void Screen2View::rotatePiece(int type) {
-    int pivotX = TETROMINO[type][1][0];
-    int pivotY = TETROMINO[type][1][1];
-
-    // Tính trước khối xoay mới
-    for (int i = 0; i < 4; i++) {
-        int dx = TETROMINO[type][i][0];
-        int dy = TETROMINO[type][i][1];
-
-        int xo = dx - pivotX;
-        int yo = dy - pivotY;
-
-        // Xoay 90 độ thuận chiều kim đồng hồ
-        int xoNew = -yo;
-        int yoNew = xo;
-
-        rotatedPiece[i][0] = xoNew + pivotX;
-        rotatedPiece[i][1] = yoNew + pivotY;
-    }
-
-    // Kiểm tra nếu xoay xong mà ra ngoài biên thì hủy
-    int dymin = rotatedPiece[0][1], dymax = rotatedPiece[0][1];
-    for (int i = 1; i < 4; i++) {
-        if (rotatedPiece[i][1] < dymin) dymin = rotatedPiece[i][1];
-        if (rotatedPiece[i][1] > dymax) dymax = rotatedPiece[i][1];
-    }
-
-    if (pieceY + dymin < 0 || pieceY + dymax > 10) {
-        // Nếu vượt trái/phải thì không xoay
-        return;
-    }
-
-    // Nếu không vượt biên, cập nhật vào khối hiện tại
-    for (int i = 0; i < 4; i++) {
-        TETROMINO[type][i][0] = rotatedPiece[i][0];
-        TETROMINO[type][i][1] = rotatedPiece[i][1];
-    }
-}
-
-
-
-void Screen2View::spawnNewBlock() {
-    uint32_t randNum;
-    if (HAL_RNG_GenerateRandomNumber(&hrng, &randNum) == HAL_OK) {
-        typeBlock = randNum % 7;
-    } else {
-        typeBlock = 0; // fallback nếu RNG lỗi
-    }
-}
-
-bool Screen2View::checkBlockRight(int type,int y){
-	int dymax = TETROMINO[type][0][1];
-	for(int i=1;i<4;i++){
-		if( TETROMINO[type][i][1] > dymax){
-			dymax = TETROMINO[type][i][1];
-		}
-	}
-	if(y + dymax >10)	return false;
-	return true;
-}
-
-bool Screen2View::checkBlockLeft(int type,int y){
-	int dymin = TETROMINO[type][0][1];
-	for(int i=1;i<4;i++){
-		if(TETROMINO[type][i][1] < dymin){
-			dymin = TETROMINO[type][i][1];
-		}
-	}
-	if(y + dymin < 0)	return false;
-	return true;
-}
 
 void Screen2View::checkFullLines() {
     for (int i = 0; i < 20; i++) { // Duyệt 20 hàng
@@ -303,7 +153,7 @@ void Screen2View::checkFullLines() {
         }
 
         if (isFull) {
-            clearLine(i);
+            //clearLine(i); // xóa full line
             currentScore++;
             Unicode::snprintf(scoreBuffer, sizeof(scoreBuffer), "%d", currentScore);
             score.setWildcard(scoreBuffer);
@@ -312,39 +162,6 @@ void Screen2View::checkFullLines() {
     }
 }
 
-void Screen2View::clearLine(int row) {
-    // Dồn tất cả hàng phía trên xuống 1 hàng
-    for (int i = row; i > 0; i--) {
-        for (int j = 0; j < 11; j++) {
-            // Copy trạng thái của ô trên xuống ô hiện tại
-            grid[i][j].setOccupied(grid[i - 1][j].isOccupied());
-            // Copy màu
-            gridBox[i][j]->setColor(gridBox[i - 1][j]->getColor());
-        }
-    }
-
-    // Reset dòng đầu tiên (dòng 0) về rỗng
-    for (int j = 0; j < 11; j++) {
-        grid[0][j].setOccupied(false);
-        gridBox[0][j]->setColor(touchgfx::Color::getColorFromRGB(50, 50, 50)); // Đen
-    }
-
-    // Cập nhật lại giao diện
-    for (int i = 0; i < 20; i++) {
-        for (int j = 0; j < 11; j++) {
-            gridBox[i][j]->invalidate();
-        }
-    }
-}
-
-int Screen2View::checkLose(){
-	for(int i=0;i<11;i++){
-		if(grid[0][i].isOccupied()){
-			return 1;
-		}
-	}
-	return 0;
-}
 
 void Screen2View::tick()
 {
@@ -356,62 +173,8 @@ void Screen2View::tick()
    int maxEvents = 5; // Giới hạn xử lý tối đa 5 sự kiện mỗi tick
 
    while (maxEvents-- > 0 && osMessageQueueGet(myQueue01Handle, &res, NULL, 0) == osOK) {
-	   if (res == 'R') {
-		   clearPiece(typeBlock);
-		   pieceY++;
-		   bool valid = checkBlockRight(typeBlock, pieceY);
-		   if (!valid) pieceY--;
-		   drawPiece(typeBlock);
-	   }
-	   else if (res == 'L') {
-		   clearPiece(typeBlock);
-		   pieceY--;
-		   bool valid = checkBlockLeft(typeBlock, pieceY);
-		   if (!valid) pieceY++;
-		   drawPiece(typeBlock);
-	   }
-	   else if (res == 'T') {
-		   clearPiece(typeBlock);
-		   rotatePiece(typeBlock);
-		   drawPiece(typeBlock);
-	   }
-	   else if (res == 'S') {
-		   isFastDrop = true; // Nhấn giữ S → rơi nhanh
-	   }
-
+	   // xử lý sự kiện ở đây
    }
-
-    int dropSpeed = isFastDrop ? 2 : 40;
-
-    // Tự động rơi theo thời gian
-    if (tickCount % dropSpeed == 0)
-    {
-        isFastDrop = false;
-
-        if (!checkCollision(typeBlock, pieceX + 1, pieceY)) {
-            clearPiece(typeBlock);
-            pieceX++; // Rơi nếu không va chạm
-            drawPiece(typeBlock);
-        } else {
-            // Nếu va chạm → dính khối
-            attachBlock(typeBlock);
-            checkFullLines();
-            if(checkLose()){
-            	if(maxScore < currentScore){
-            		maxScore = currentScore;
-            	}
-            	// Chuyển sang màn hình GameOver và truyền điểm
-				static_cast<FrontendApplication*>(Application::getInstance())->gotoScreen3ScreenSlideTransitionWest();
-				presenter->setFinalScore(currentScore);
-            }
-            // Khởi tạo khối mới
-            pieceX = 0;
-            pieceY = 3; // giữa màn hình
-            //typeBlock = rand() % 7; // tạo khối mới
-            spawnNewBlock();
-            drawPiece(typeBlock);
-        }
-    }
 }
 
 void Screen2View::handleTickEvent()
