@@ -4,16 +4,16 @@
 Screen1Presenter::Screen1Presenter(Screen1View& v)
     : view(v)
 {
-
 }
 
 void Screen1Presenter::activate()
 {
-
+    // Hàm này được gọi khi màn hình được kích hoạt
+    // Ví dụ: cập nhật dữ liệu từ model -> view
 }
 
 void Screen1Presenter::deactivate()
 {
-
+    // Hàm này được gọi khi rời màn hình
+    // Ví dụ: lưu trạng thái, dừng timer, v.v.
 }
-
