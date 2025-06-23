@@ -4,15 +4,15 @@
 Screen3Presenter::Screen3Presenter(Screen3View& v)
     : view(v)
 {
-
 }
 
 void Screen3Presenter::activate()
 {
-	view.setFinalScore(model->getFinalScore());
+    // Khi vào màn hình, lấy điểm từ Model và cập nhật View
+    view.setFinalScore(model->getFinalScore());
 }
 
 void Screen3Presenter::deactivate()
 {
-
+    // Nếu cần dọn dẹp gì khi rời màn hình, làm tại đây
 }

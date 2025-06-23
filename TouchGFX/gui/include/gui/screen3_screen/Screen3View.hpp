@@ -9,10 +9,17 @@ class Screen3View : public Screen3ViewBase
 public:
     Screen3View();
     virtual ~Screen3View() {}
-    virtual void setupScreen();
-    virtual void tearDownScreen();
+
+    virtual void setupScreen() override;
+    virtual void tearDownScreen() override;
+
     void setFinalScore(int s);
+
+    // Nếu bạn muốn thêm hiệu ứng theo thời gian
+    virtual void handleTickEvent() override;
+
 protected:
+    void updateScoreColor(int scoreValue);  // Thay đổi màu điểm theo giá trị
 };
 
 #endif // SCREEN3VIEW_HPP
